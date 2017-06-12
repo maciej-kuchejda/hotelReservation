@@ -15,6 +15,17 @@ namespace HotelReservation.Entities
 
         public string City { get; set; }
 
+        public string PostalCode { get; set; }
+
+        public string HouseNumber { get; set; }
+
+        public string ContactPhone { get; set; }
+
+        /// <summary>
+        /// Zapisany w htmlu
+        /// </summary>
+        public string Description { get; set; }
+
         public virtual ICollection<Opinion> Opinions { get; set; }
 
         [Required]

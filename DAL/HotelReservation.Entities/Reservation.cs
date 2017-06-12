@@ -19,5 +19,23 @@ namespace HotelReservation.Entities
         public virtual Room Room { get; set; }
         [Required]
         public virtual User User { get; set; }
+
+        [Required]
+        public ReservationPhase Phase { get; set; }
+
+        [Required]
+        public ReservationType Type { get; set; }
+    }
+    public enum ReservationPhase
+    {
+        Unknown = 0,
+        InsertedInformation = 1,
+        CheckedSummary = 2,
+        Canceled = 3
+    }
+    public enum ReservationType
+    {
+        Normal = 1,
+        Deleted = 2,
     }
 }

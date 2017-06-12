@@ -40,7 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\AddReservationRequestDTO.cs" />
+    <Compile Include="DTO\AddReservationResponseDTO.cs" />
+    <Compile Include="DTO\HotelDetailsResponseDTO.cs" />
+    <Compile Include="DTO\RoomDetailsResponseDTO.cs" />
+    <Compile Include="DTO\SearchHotelRequestDTO.cs" />
+    <Compile Include="DTO\SearchHotelResponseDTO.cs" />
+    <Compile Include="DTO\SearchModelId.cs" />
+    <Compile Include="DTO\SearchUserModelDTO.cs" />
+    <Compile Include="DTO\UpdateReservationModelDTO.cs" />
+    <Compile Include="DTO\UserDetailsModelDTO.cs" />
+    <Compile Include="DTO\UserModelDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\ResponseModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DAL\HotelReservation.Entities\HotelReservation.Entities.csproj">
+      <Project>{939ACACF-E5A7-47FB-B3E9-6F2328EF5095}</Project>
+      <Name>HotelReservation.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -48,7 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HotelService.cs" />
+    <Compile Include="IHotelService.cs" />
+    <Compile Include="InstallModule.cs" />
+    <Compile Include="IReservationService.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservationService.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="NLog.config">
@@ -58,6 +65,20 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Model\Common.Model.csproj">
+      <Project>{93411d19-3540-447b-a8a3-897b5e651739}</Project>
+      <Name>Common.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DAL\HotelReservation.DAL.Interfaces\HotelReservation.DAL.Interfaces.csproj">
+      <Project>{0aa46c04-40ed-41f7-907d-9a82254190fc}</Project>
+      <Name>HotelReservation.DAL.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DAL\HotelReservation.Entities\HotelReservation.Entities.csproj">
+      <Project>{939acacf-e5a7-47fb-b3e9-6f2328ef5095}</Project>
+      <Name>HotelReservation.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
