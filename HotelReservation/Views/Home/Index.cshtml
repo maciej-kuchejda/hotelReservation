@@ -1,0 +1,33 @@
+﻿<div class="container-fluid">
+    <h3>
+        Zarezerwuj swój hotel
+    </h3>
+    <div class="row">
+        <div class="col-md-3" style="display:inline-block; min-height:290px;">
+            <h4>Data od:</h4>
+            <div uib-datepicker ng-model="homeCtrl.searchData.from" class="well well-sm" datepicker-options="homeCtrl.options"></div>
+        </div>
+        <div class="col-md-3" style="display:inline-block; min-height:290px;">
+            <h4>Data do:</h4>
+            <div uib-datepicker ng-model="homeCtrl.searchData.to" class="well well-sm" datepicker-options="homeCtrl.options"></div>
+        </div>
+        <div class="col-md-2 form-group">
+            <h4>Miejsce:</h4>
+            <input type="text" class="form-control" ng-model="homeCtrl.searchData.place" />
+        </div>
+        <div class="col-md-2 form-group">
+            <h4>Ilość osób:</h4>
+            <input type="number" class="form-control" ng-model="homeCtrl.searchData.personsNumber" />
+        </div>
+        @*<div class="col-md-2 form-group">
+            <h4>Ilość osób:</h4>
+            <input type="number" class="form-control" ng-model="homeCtrl.searchData.personsNumber" />
+        </div>*@
+        <div class="col-md-2 form-group">
+            <button class="btn btn-primary" ng-click="homeCtrl.navigateToSearch()">Szukaj</button> 
+        </div>
+    </div>
+    @*<div class="row">
+        <button class="btn btn-primary" ng-click="homeCtrl.navigateToSearch()">Szukaj</button> 
+    </div>*@
+</div>

@@ -26,18 +26,12 @@ namespace HotelReservation.Services
 
             using (var unity = _factory.GetUnitOfWork(UnitOfWorkContext.ReadOnly))
             {
-                var result = SearchHotels(id.SearchRequest);
-                if (result.Code != ResultActionModelCode.OK)
-                    return new ResponseModel<HotelDetailsResponseDTO>() { Code = result.Code, Message = result.Message };
-                var roomsIds = result.Data.Where(x => x.HotelId == id.HotelId).Select(x => x.RoomId).ToList();
-                var hotel = _factory.GetUnitOfWork(UnitOfWorkContext.ReadOnly)
-                    .GetRepository<Hotel>()
-                    .AsQueryable()
-                    .FirstOrDefault(x => x.Id == id.HotelId);
-                var avaibleRooms = _factory.GetUnitOfWork(UnitOfWorkContext.ReadOnly)
+                var room = _factory.GetUnitOfWork(UnitOfWorkContext.ReadOnly)
                     .GetRepository<Room>()
                     .AsQueryable()
-                    .Where(x => roomsIds.Contains(x.Id)).ToList();
+                    .FirstOrDefault(x => x.Id == id.RoomId);
+                var hotel = room.Hotel;
+                
 
                 HotelDetailsResponseDTO response = new HotelDetailsResponseDTO()
                 {
@@ -48,12 +42,12 @@ namespace HotelReservation.Services
                     HotelId = hotel.Id,
                     HotelName = hotel.Name,
                     HotelNumber = hotel.HouseNumber,
-                    Rooms = avaibleRooms.Select(x => new RoomDetailsResponseDTO()
+                    Room = new RoomDetailsResponseDTO()
                     {
-                        AdditionalInfo = x.AdditionalInfo,
-                        Price = x.Price,
-                        RoomId = x.Id,
-                    }).ToList()
+                        AdditionalInfo = room.AdditionalInfo,
+                        Price = room.Price,
+                        RoomId = room.Id,
+                    }
                 };
                 return ResponseModel<HotelDetailsResponseDTO>.OK(response);
             }
@@ -67,16 +61,17 @@ namespace HotelReservation.Services
             {
                 var result = unity.GetRepository<Hotel>()
                     .AsQueryable()
-                    .Where(x => x.Name == dto.Place || x.Country.Name == dto.Place)
+                    .Where(x => x.Name == dto.Place || x.Country.Name == dto.Place || x.City == dto.Place)
                     .SelectMany(x => x.Rooms)
                     .Where(x => x.PersonNumbers == dto.PersonsNumber &&
-                            x.Reservations.All(z => !(z.DateFrom == dto.From && z.DateTo == dto.To)))
+                            (x.Reservations.All(z => !(z.DateFrom == dto.From && z.DateTo == dto.To || x.Reservations.Count == 0))))
                     .Select(x => new SearchHotelResponseDTO() {
                         HotelId = x.Hotel.Id,
                         City = x.Hotel.City,
                         Country = x.Hotel.Country.Name,
                         HotelName = x.Hotel.Name,
                         Price = x.Price,
+                        RoomId = x.Id
                     }).ToList();
 
                 return ResponseModel<List<SearchHotelResponseDTO>>.OK(result);

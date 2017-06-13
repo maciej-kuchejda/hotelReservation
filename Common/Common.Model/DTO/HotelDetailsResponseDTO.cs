@@ -22,6 +22,6 @@ namespace Common.Model.DTO
 
         public string Description { get; set; }
 
-        public virtual List<RoomDetailsResponseDTO> Rooms  { get; set; }
+        public RoomDetailsResponseDTO Room  { get; set; }
     }
 }

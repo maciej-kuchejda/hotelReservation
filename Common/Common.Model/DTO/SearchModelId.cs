@@ -8,7 +8,7 @@ namespace Common.Model.DTO
 {
     public class SearchModelId
     {
-        public int HotelId { get; set; }
+        public int RoomId { get; set; }
 
         public SearchHotelRequestDTO SearchRequest { get; set; }
     }

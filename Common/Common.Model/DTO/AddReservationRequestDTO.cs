@@ -17,6 +17,6 @@ namespace Common.Model.DTO
 
         public ReservationPhase Phase { get; set; }
 
-        public UserModelDTO UserDTO { get; set; }
+        public UserModelDTO User { get; set; }
     }
 }

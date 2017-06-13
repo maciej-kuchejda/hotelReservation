@@ -1,0 +1,27 @@
+﻿<div class="container container-fluid">
+    <h4>Znalezione pokoje:</h4>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Miasto</th>
+                <th>Państwo</th>
+                <th>Nazwa hotelu</th>
+                <th>Cena za dobę</th>
+                <th>Zarezerwuj</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in searchCtrl.data">
+                <td>{{item.city}}</td>
+                <td>{{item.country}}</td>
+                <td>{{item.hotelName}}</td>
+                <td>{{item.price}}</td>
+                <td>
+                    <button class="btn btn-primary" ng-click="searchCtrl.addReservation(item)">Zarezerwuj</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+

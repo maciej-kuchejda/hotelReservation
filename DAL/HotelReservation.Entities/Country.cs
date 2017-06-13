@@ -9,5 +9,10 @@ namespace HotelReservation.Entities
     public class Country : MainEntity
     {
         public string Name { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
+
+        public virtual ICollection<Hotel> Hotels { get; set; }
+
     }
 }

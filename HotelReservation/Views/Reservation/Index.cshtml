@@ -1,0 +1,92 @@
+﻿<div class="container container-fluid">
+    <h3>Szczegóły rezerwacji</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Opis:</h4>
+            {{ctrl.data.description}}
+        </div>
+        <div class="col-md-6">  
+            <h4>Państwo:</h4>          
+            {{ctrl.data.hotelCountry}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Telefon:</h4>
+            {{ctrl.data.hotelContactPhone}}
+        </div>
+        <div class="col-md-6">   
+            <h4>Miasto:</h4>
+            {{ctrl.data.hotelCity}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Nazwa:</h4>
+            {{ctrl.data.hotelName}}
+        </div>
+        <div class="col-md-6">
+            <h4>Numer:</h4>
+            {{ctrl.data.hotelNumber}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Telefon:</h4>
+            {{ctrl.data.room.additionalInfo}}
+        </div>
+        <div class="col-md-6">
+            <h4>Cena za dobe:</h4>
+            {{ctrl.data.room.price}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Telefon:</h4>
+            {{ctrl.data.room.additionalInfo}}
+        </div>
+        <div class="col-md-6">
+            <h4>Cena za dobe:</h4>
+            {{ctrl.data.room.price}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Rezerwacja od:</h4>
+            {{ctrl.reservationData.from}}
+        </div>
+        <div class="col-md-6">
+            <h4>Rezerwacja do:</h4>
+            {{ctrl.reservationData.to}}
+        </div>
+    </div>
+
+    <div class="container container-fluid">
+        <h3>Uzupełnij dane:</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <h4>Imię</h4>
+            </div>
+            <div class="col-md-3 form-group">
+                <input type="text" class="form-control" ng-model="ctrl.reservationData.user.firstName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h4>Nazwisko</h4>
+            </div>
+            <div class="col-md-3 form-group">
+                <input type="text" class="form-control" ng-model="ctrl.reservationData.user.lastName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-warning" ng-click="ctrl.cancelReservation()"> Anuluj</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-success" ng-click="ctrl.addReservation()">Zapisz</button>
+            </div>
+        </div>
+    </div>
+</div>
+

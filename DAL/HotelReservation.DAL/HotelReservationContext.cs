@@ -20,7 +20,8 @@ namespace HotelReservation.DAL
 
         public HotelReservationContext() : base("name=HotelReservationContext")
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<HotelReservationContext>());
+            Database.SetInitializer(new HotelReservationInitializer());
+            
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

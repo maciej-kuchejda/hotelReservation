@@ -20,7 +20,7 @@ namespace HotelReservation.Services
 
         public ResponseModel<AddReservationResponseDTO> AddReservation(AddReservationRequestDTO dto)
         {
-            if (dto == null || dto.UserDTO == null)
+            if (dto == null || dto.User == null)
                 return new ResponseModel<AddReservationResponseDTO>() { Code = ResultActionModelCode.NoData, Message = "No data" };
 
             using (var unity = _factory.GetUnitOfWork(UnitOfWorkContext.Default))
@@ -30,7 +30,17 @@ namespace HotelReservation.Services
                 if (room == null)
                     return new ResponseModel<AddReservationResponseDTO>() { Code = ResultActionModelCode.NoEntityFound, Message = "No enetity found" };
                 var user = unity.GetRepository<User>().AsQueryable()
-                    .FirstOrDefault(x => x.Id == dto.UserDTO.Id);
+                    .FirstOrDefault(x => x.FirstName == dto.User.FirstName && x.LastName == dto.User.LastName);
+                if (user == null)
+                {
+                    user = new User()
+                    {
+                        FirstName = dto.User.FirstName,
+                        LastName = dto.User.LastName
+                    };
+                    unity.GetRepository<User>().Add(user);
+                    unity.SaveChanges();
+                }
                 var reservation = new Reservation()
                 {
                     DateFrom = dto.From,

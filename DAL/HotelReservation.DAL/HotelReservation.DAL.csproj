@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HotelReservationContext.cs" />
+    <Compile Include="HotelReservationInitializer.cs" />
     <Compile Include="InstallModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
